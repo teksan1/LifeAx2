@@ -5,7 +5,7 @@
 */
 
 import { GoogleGenAI } from '@google/genai';
-import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import { AppSettings, ViewType, UserBaseline } from './types';
@@ -126,7 +126,7 @@ const ChatInput = ({ onSend, isLoading, onStop, errorMessage, statusText, cooldo
 function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [activeView, setActiveView] = useState<ViewType>('auth');
-  const [settings, setSettings] = useState<AppSettings>(DEFAULT_SETTINGS);
+  const [settings] = useState<AppSettings>(DEFAULT_SETTINGS);
   const [baseline, setBaseline] = useState<UserBaseline | null>(null);
   const [onboardingStep, setOnboardingStep] = useState<number>(0);
   const [tempBaseline, setTempBaseline] = useState<UserBaseline>(INITIAL_BASELINE);
@@ -190,10 +190,11 @@ function App() {
     if (!loginId || !accessCode) return;
 
     // Standard AI Studio API Key verification
-    if (window.aistudio && typeof window.aistudio.hasSelectedApiKey === 'function') {
-        const hasKey = await window.aistudio.hasSelectedApiKey();
+    const aiWin = window as any;
+    if (aiWin.aistudio && typeof aiWin.aistudio.hasSelectedApiKey === 'function') {
+        const hasKey = await aiWin.aistudio.hasSelectedApiKey();
         if (!hasKey) {
-            await window.aistudio.openSelectKey();
+            await aiWin.aistudio.openSelectKey();
         }
     }
 
@@ -244,7 +245,7 @@ function App() {
         let fullText = '';
         for await (const chunk of responseStream) {
             if (abortControllerRef.current?.signal.aborted) return;
-            fullText += chunk.text;
+            fullText += (chunk as any).text || '';
             onUpdate(fullText);
         }
     } catch (error: any) {

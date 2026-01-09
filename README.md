@@ -1,32 +1,27 @@
 # LifeAx: Aura Sentinel Build (LifeAx2)
 
-LifeAx is an advanced behavioral intelligence and temporal planning platform. This version, **Aura Sentinel**, is engineered for deep user profiling and high-resilience AI interactions.
+LifeAx is a specialized behavioral intelligence and temporal architecture platform. The **Aura Sentinel** build is designed for high-velocity user profiling and resilient AI-driven lifecycle optimization.
 
-## Core Features
+## Primary Objectives
 
-- **Behavioral Profiling**: Multi-step onboarding captures identity, biological rhythms, and strategic objectives to build a permanent baseline dossier.
-- **Aura Sentinel Engine**: An inquisitive AI persona that uses your dossier to identify productivity triggers and map behavioral risk patterns.
-- **Resilient Orchestration**:
-    - **Adaptive Model Fallback**: Automatically switches between Gemini 3 Flash and Gemini 2.5 Flash Lite based on traffic and quota.
-    - **Temporal Debouncing**: Enforced cooldown periods (3-5s) to maintain stable RPM (Requests Per Minute) within free-tier limits.
-    - **Sliding Context Window**: Tight 6-message history to optimize token usage and prevent context overflow.
-- **Secure Access**: Integrated Identity Core authentication and mandatory API key selection flow.
+- **Behavioral Profiling**: Capture and analyze user designation, biological rhythms, and 90-day strategic objectives.
+- **Resilient AI Layer**: Robust error handling for free-tier Gemini API quotas, featuring model fallbacks and adaptive debouncing.
+- **Secure Identity Core**: Integrated authentication gateway and automated AI Studio API key synchronization.
+- **Temporal Scheduling**: Mapping cognitive peak windows to actionable task blocks.
 
-## Project Structure
+## System Architecture
 
-- `index.tsx`: Main application entry point, including Auth, Onboarding, and Intelligence views.
-- `types.ts`: TypeScript definitions for the user baseline and system state.
-- `index.css`: Immersive "Sentinel" dark-mode theme with high-performance animations.
-- `components/`:
-    - `DottedGlowBackground.tsx`: Interactive, high-performance background canvas.
-    - `SideDrawer.tsx`: System architecture and dossier management overlay.
-    - `Icons.tsx`: Custom SVG icon set.
+- **`index.tsx`**: Core application logic including Auth, Onboarding, and the Sentinel Chat Engine.
+- **`types.ts`**: Data contracts for the baseline user dossier and application state.
+- **`index.css`**: "Sentinel" high-contrast immersive dark theme with refined UI transitions.
+- **`components/`**: Modularized UI elements including the DottedGlowBackground canvas and SideDrawer overlays.
 
-## Deployment Instructions
+## Deployment & Usage
 
-1. Ensure the environment variable `process.env.API_KEY` is configured via your hosting provider or local environment.
-2. The application is built as an ES6 module. Serve `index.html` from any static file server.
-3. Users will be prompted to authenticate via the **Identity Core** upon first load.
+This project is optimized for deployment as an ES6 module application. 
+1. **GitHub Repository**: `https://github.com/teksan1/LifeAx/tree/LifeAx2`
+2. **Access**: Requires Identity Core authentication (configured in `index.tsx`).
+3. **API Integrity**: Uses `process.env.API_KEY` for seamless @google/genai integration.
 
 ---
-*Developed by teksan1 - LifeAx2 Branch Build*
+*Maintained by teksan1 - Final Build Release*
